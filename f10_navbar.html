@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navigation Layout</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+
+            font-family: "Poppins", sans-serif;
+
+            background: linear-gradient(135deg, #0f172a, #1e3a8a);
+        }
+
+        /* Header */
+
+        header {
+            height: 10vh;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 0 40px;
+
+            background: rgba(255, 255, 255, 0.12);
+
+            backdrop-filter: blur(12px);
+
+            color: white;
+
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        nav ul {
+            list-style: none;
+
+            display: flex;
+
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+
+            text-decoration: none;
+
+            padding: 10px 18px;
+
+            border-radius: 30px;
+
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+
+            transform: translateY(-3px);
+        }
+
+        /* Main */
+
+        main {
+            flex: 1;
+
+            display: flex;
+
+            gap: 20px;
+
+            padding: 20px;
+        }
+
+        section {
+            flex: 1;
+
+            padding: 40px;
+
+            border-radius: 25px;
+
+            color: white;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 1.8rem;
+
+            transition: 0.4s;
+        }
+
+        .left {
+            background: linear-gradient(135deg, #ef4444, #b91c1c);
+        }
+
+        .right {
+            background: linear-gradient(135deg, #facc15, #ca8a04);
+        }
+
+        section:hover {
+            transform: translateY(-10px);
+
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+
+        footer {
+            height: 10vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: rgba(255, 255, 255, 0.12);
+
+            backdrop-filter: blur(12px);
+
+            color: white;
+
+            font-size: 1.1rem;
+        }
+
+        /* Responsive */
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+
+                height: auto;
+
+                padding: 20px;
+            }
+
+            nav ul {
+                margin-top: 15px;
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
+
+            main {
+                flex-direction: column;
+            }
+
+            section {
+                min-height: 250px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+
+        <div class="logo">⚡ My Website</div>
+
+        <nav>
+
+            <ul>
+                <li><a href="#">Home</a></li>
+
+                <li><a href="#">About</a></li>
+
+                <li><a href="#">Services</a></li>
+
+                <li><a href="#">Contact</a></li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+    <main>
+
+        <section class="left">
+            Left Section
+        </section>
+
+        <section class="right">
+            Right Section
+        </section>
+
+    </main>
+
+    <footer>
+
+        ☰ Abhay 2510990566
+
+    </footer>
+
+</body>
+
+</html>

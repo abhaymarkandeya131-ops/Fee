@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Abhay 2510990566</title>
+<style>
+body{
+    margin:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.box{
+    width:300px;
+    height:500px;
+    border:2px solid black;
+    position:relative;
+}
+
+.oval{
+    width:80px;
+    height:80px;
+    border:2px solid black;
+    border-radius:50%;
+    position:absolute;
+    top:20px;
+    left:20px;
+}
+
+.hline{
+    width:90px;
+    border-top:2px solid black;
+    position:absolute;
+    top:110px;
+    left:20px;
+}
+
+.vline{
+    height:120px;
+    border-left:2px solid black;
+    position:absolute;
+    top:110px;
+    left:20px;
+}
+
+.cross{
+    width:80px;
+    height:80px;
+    position:absolute;
+    top:180px;
+    left:30px;
+    animation:spin 2s linear infinite;
+}
+
+.cross div{
+    position:absolute;
+    width:80px;
+    border-top:2px solid black;
+    top:40px;
+}
+
+.cross .a{
+    transform:rotate(45deg);
+}
+
+.cross .b{
+    transform:rotate(-45deg);
+}
+
+@keyframes spin{
+    from{transform:rotate(0deg);}
+    to{transform:rotate(360deg);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+    
+    <div class="oval"></div>
+    <div class="hline"></div>
+    <div class="vline"></div>
+
+    <div class="cross">
+        <div class="a"></div>
+        <div class="b"></div>
+    </div>
+</div>
+
+</body>
+</html>

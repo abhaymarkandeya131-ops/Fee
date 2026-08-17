@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive To-Do List</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px;
+
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+
+            padding: 30px;
+
+            border-radius: 25px;
+
+            background: rgba(255, 255, 255, 0.15);
+
+            backdrop-filter: blur(15px);
+
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+
+            color: white;
+
+            margin-bottom: 25px;
+
+            font-size: 2.2rem;
+        }
+
+        .input-box {
+            display: flex;
+
+            gap: 10px;
+
+            margin-bottom: 25px;
+        }
+
+        .input-box input {
+            flex: 1;
+
+            padding: 15px;
+
+            border: none;
+
+            outline: none;
+
+            border-radius: 15px;
+
+            font-size: 1rem;
+        }
+
+        .input-box button {
+            padding: 15px 20px;
+
+            border: none;
+
+            border-radius: 15px;
+
+            background: white;
+
+            font-size: 1rem;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .input-box button:hover {
+            transform: scale(1.05);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding: 15px;
+
+            margin-bottom: 12px;
+
+            border-radius: 15px;
+
+            background: rgba(255, 255, 255, 0.2);
+
+            color: white;
+
+            animation: slide 0.4s ease;
+        }
+
+        @keyframes slide {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .task {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            flex: 1;
+        }
+
+        .task span {
+            word-break: break-word;
+        }
+
+        .completed {
+            text-decoration: line-through;
+
+            opacity: 0.6;
+        }
+
+        .actions {
+            display: flex;
+
+            gap: 10px;
+        }
+
+        .complete-btn,
+        .delete-btn {
+            border: none;
+
+            padding: 8px 12px;
+
+            border-radius: 10px;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .complete-btn:hover,
+        .delete-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .stats {
+            display: flex;
+
+            justify-content: space-between;
+
+            margin-top: 20px;
+
+            color: white;
+
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 550px) {
+            .input-box {
+                flex-direction: column;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+
+            li {
+                flex-direction: column;
+
+                gap: 15px;
+
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>📝 My To-Do List</h1>
+
+        <div class="input-box">
+
+            <input type="text" id="taskInput" placeholder="Add a new task...">
+
+            <button onclick="addTask()">Add</button>
+
+        </div>
+
+        <ul id="taskList"></ul>
+
+        <div class="stats">
+
+            <p>Total: <span id="total">0</span></p>
+
+            <p>Completed: <span id="completed">0</span></p>
+
+        </div>
+
+    </div>
+
+    <script>
+        const taskInput = document.getElementById("taskInput");
+        const taskList = document.getElementById("taskList");
+
+        function updateStats() {
+            const tasks = document.querySelectorAll("li");
+            const completedTasks =
+                document.querySelectorAll(".completed");
+
+            document.getElementById("total").textContent =
+                tasks.length;
+
+            document.getElementById("completed").textContent =
+                completedTasks.length;
+        }
+
+        function addTask() {
+            const text = taskInput.value.trim();
+
+            if (text === "") {
+                alert("Please enter a task.");
+                return;
+            }
+
+            const li = document.createElement("li");
+
+            li.innerHTML =
+                `
+                <div class="task">
+                    <span>${text}</span>
+                </div>
+
+                <div class="actions">
+
+                    <button class="complete-btn">
+                        ✓
+                    </button>
+
+                    <button class="delete-btn">
+                        ✕
+                    </button>
+
+                </div>
+            `;
+
+            const completeButton =
+                li.querySelector(".complete-btn");
+
+            const deleteButton =
+                li.querySelector(".delete-btn");
+
+            completeButton.onclick = function () {
+                li.querySelector("span")
+                    .classList.toggle("completed");
+
+                updateStats();
+            };
+
+            deleteButton.onclick = function () {
+                li.remove();
+
+                updateStats();
+            };
+
+            taskList.appendChild(li);
+
+            taskInput.value = "";
+
+            updateStats();
+        }
+
+        taskInput.addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                addTask();
+            }
+        });
+    </script>
+
+</body>
+
+</html>

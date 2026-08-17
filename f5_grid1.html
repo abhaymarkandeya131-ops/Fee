@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Prachi">
+
+    <title>Beautiful Responsive Grid</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Changa+One&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: "Changa One", sans-serif;
+
+            background: linear-gradient(135deg, #0f172a, #1e3a8a);
+
+            display: flex;
+            flex-direction: column;
+
+            color: white;
+        }
+
+        .header,
+        .footer {
+            height: 10vh;
+
+            display: flex;
+            align-items: center;
+
+            padding: 20px;
+            margin: 10px;
+
+            border-radius: 20px;
+
+            background: linear-gradient(135deg, #0d8bf9, #2563eb);
+
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .header span,
+        .footer span {
+            font-size: 2rem;
+            margin-right: 15px;
+        }
+
+        .container {
+            flex: 1;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px;
+        }
+
+        .gc {
+            display: grid;
+
+            gap: 15px;
+
+            grid-template-columns: 150px 150px;
+            grid-template-rows: repeat(3, 150px);
+
+            place-content: center;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #0d8bf9, #2563eb);
+
+            border-radius: 20px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 1.4rem;
+
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+
+            transition: all 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.05);
+
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+
+            cursor: pointer;
+        }
+
+        @media (min-width: 360px) {
+            .gc {
+                grid-template-columns: repeat(2, 150px);
+                grid-template-rows: repeat(4, 100px);
+            }
+
+            #m7 {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (min-width: 767px) {
+            .gc {
+                grid-template-columns: repeat(3, 200px);
+                grid-template-rows: repeat(3, 150px);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .gc {
+                grid-template-columns: repeat(4, 220px);
+                grid-template-rows: repeat(2, 220px);
+            }
+
+            #m6 {
+                grid-column: 2 / -2;
+            }
+
+            #m7 {
+                grid-column: 4 / -1;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .header,
+            .footer {
+                font-size: 0.9rem;
+            }
+
+            .card {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <span>&#9812;</span>
+        Header / Navbar
+    </header>
+
+    <section class="container">
+
+        <div class="gc">
+
+            <main class="card" id="m1">Content-1</main>
+
+            <main class="card" id="m2">Content-2</main>
+
+            <main class="card" id="m3">Content-3</main>
+
+            <main class="card" id="m4">Content-4</main>
+
+            <main class="card" id="m5">Content-5</main>
+
+            <main class="card" id="m6">Content-6</main>
+
+            <main class="card" id="m7">Content-7</main>
+
+        </div>
+
+    </section>
+
+    <footer class="footer">
+        <span>&#9776;</span>
+        Abhay 2510990566
+    </footer>
+
+</body>
+
+</html>
