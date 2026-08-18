@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="clock">
+        <div style="font-size: 2rem;">
+            <span id="hrs"></span>
+            <span id="min"></span>
+            <span id="sec"></span>
+        </div>
+    </div>
+    <script>
+        let hrs = document.getElementById("hrs");
+        let min = document.getElementById("min");
+        let sec = document.getElementById("sec");
+
+        function clock() {
+            let time = new Date();
+            let h = time.getHours();
+            let m = time.getMinutes();
+            let s = time.getSeconds();
+
+            if (h < 10) {
+                h = "0" + h;
+            }
+            if (m < 10) {
+                m = "0" + m;
+            }
+            if (s < 10) {
+                s = "0" + s;
+            }
+
+            hrs.innerHTML = h + ":";
+            min.innerHTML = m + ":";
+            sec.innerHTML = s;
+        }
+
+        // Call the clock function immediately and then every second
+        clock();
+        setInterval(clock, 1000);
+        
+
+    </script>
+</body>
+</html>

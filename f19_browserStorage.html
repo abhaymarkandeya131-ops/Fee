@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Student Names</h2>
+    <ul id="studentList"></ul>
+    <script>
+        const Students =[
+            {id:1, name:"John", age:20},
+            {id:2, name:"Jane", age:22},
+            {id:3, name:"June", age:21}
+        ];
+        localStorage.setItem("Students", JSON.stringify(Students));
+
+        const data = localStorage.getItem("Students");
+        const studentData = JSON.parse(data);
+        const studentList = document.getElementById("studentList");
+        studentData.forEach(student => {
+            const li = document.createElement("li");
+            li.textContent = student.name;
+            studentList.appendChild(li);
+        });
+    </script>
+</body>
+</html>
